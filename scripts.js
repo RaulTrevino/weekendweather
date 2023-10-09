@@ -29,7 +29,7 @@ currentweatherinfo.addEventListener('submit',async (e)=>{
   const zip = zipcode.value
   const weatherData = await weatherApiCall(zip);
    updateWeatherInfo(weatherData)
-  changeBackground(await weatherData)
+  changeBackgroundImg(await weatherData)
 })
 
   
@@ -43,7 +43,8 @@ async function weatherApiCall(zip) {
 
           } else window.alert('Invalid Zipcode')
         }
-        console.log(weatherApiCall(10911))
+        console.log(weatherApiCall(90210
+          ))
 
 
         function updateWeatherInfo(weatherData) {
@@ -69,17 +70,44 @@ async function weatherApiCall(zip) {
         }
         console.log(formatAMPM(new Date))
 
-        function changeBackground(weatherData){
-          console.log(changeBackground)
+
+        const card = document.querySelector('#card')
+        card.style.backgroundImage = "url('./images/clear.jpg')";
+      
+      function changeBackgroundImg(weatherData){  
+        console.log(weatherData.weather[0].main)
           if (weatherData.weather[0].main === 'Rain'){
-          changeBackground.innertext = ''
+            card.style.backgroundImage = "url('./images/rain.jpg')";
+      
           } else if (weatherData.weather[0].main === 'Clouds'){
-              changeBackground.innerText = url(images/lightclouds.jpg);
+            card.style.backgroundImage = "url('./images/lightclouds.jpg')";
+      
+          } else if (weatherData.weather[0].main === 'Snow'){
+            card.style.backgroundImage = "url('./images/snow.jpg')"
+      
           } else if (weatherData.weather[0].main === 'Clear'){
-              changeBackground.innerText = url(images/clear.jpg);
-          } else if (weatherData.weather[0].main === 'Snow');{
-              changeBackground.innerText = url(images/snow.jpg)}
-          }
+            card.style.backgroundImage = "url('./images/clear.jpg')";}  
+      }
+
+
+
+
+
+
+
+
+
+// function changeBackground1(weatherData){
+//   console.log(changeBackground)
+// if (weatherData.weather[0].main === 'Rain'){
+// changeBackground.innertext = ''
+// } else if (weatherData.weather[0].main === 'Clouds'){
+//     changeBackground.innerText = '';
+// } else if (weatherData.weather[0].main === 'Clear'){
+//     changeBackground.innerText = '';
+// } else if (weatherData.weather[0].main === 'Snow');{
+//     changeBackground.innerText = ''}
+// }
 
 // function addWeatherinfo(getweatherinfo){
 //   for(const data of getweatherinfo){
